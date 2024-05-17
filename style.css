@@ -1,0 +1,11 @@
+#player {
+    position: relative;
+    background-color: red;
+    height: 50px;
+    width: 50px;
+}
+
+html {
+    background-image: url("https://cdn.wallpapersafari.com/58/57/KgVLkF.gif");
+    background-repeat: repeat-x;
+}
