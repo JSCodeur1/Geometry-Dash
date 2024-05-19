@@ -1,8 +1,15 @@
+#grid {
+    position: absolute;
+    top: 700px;
+    border: 1px solid white;
+}
+
 #player {
     position: relative;
+    border: 1px solid white;
     background-color: red;
-    height: 50px;
-    width: 50px;
+    height: 48px;
+    width: 48px;
 }
 
 html {
@@ -20,6 +27,3 @@ canvas {
     left: 0px;
 }
 
-div {
-    position: relative;
-}
