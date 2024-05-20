@@ -21,7 +21,8 @@ function monter(n) {
     joueur.style.top = y.toString() + "px";
 }
 function sauter() {
-    if (h<-15 || MORT) {
+    if ((y <= bas && h < 10) || MORT) {
+        y = bas;
         clearInterval(interval);
         return 0;
     } 
@@ -56,17 +57,20 @@ function vraiY(fy) {
 }
 
 function mort(lev, yy) {
+    sauv=yy;
     lev += 4;
-    yy = vraiY(yy);
-    console.log(yy + " " + typeof(yy));
-    if (level[(10-yy)+1][lev-1] === 1 && yy != vraiY(bas)) {
-        alert('top');
-        bas = y;
+    yy = vraiY(yy-30);
+    if (level[(10-yy)][lev-1] === 1 && yy != vraiY(bas)) {
+        bas = y-(y%50);
+        y=bas
+        joueur.style.top = bas+50 + "px";
+        console.log(bas);
         h = -100;
         deg = 0;
         joueur.style.transform = 'rotate('+deg+'deg)';
         
     }
+    yy = vraiY(sauv);
     if (level[9-yy][lev] === 1) {
         MORT = true;
     }
@@ -82,6 +86,7 @@ const tailleX = window.innerWidth;
 const joueur = document.getElementById('player');
 const html = document.querySelector('html');
 var y = 700,
+    sauv,
     MORT = false,
     bas = 700,
     lev=0,
@@ -95,6 +100,7 @@ var y = 700,
     canvas;
 
 html.onclick = function () {
+    console.log(y + " " + bas);
     if (y === bas && !MORT) {
         jump();
     }
